@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+# Fixture bytes are the thing under test — never convert them. The json5 suite
+# encodes CR/CRLF/LF cases by hand.
+test/json5-suite/** -text

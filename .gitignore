@@ -1,0 +1,6 @@
+node_modules/
+dist/
+
+# Executor working directories (CLAUDE.md — repo hygiene)
+.claude/
+.code/
