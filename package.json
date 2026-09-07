@@ -1,6 +1,6 @@
 {
   "name": "@notrealstudio/nr-json5",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JSON5 microcodec: full reader (json5-tests green), canonical single-line relaxed writer. Zero dependencies.",
   "keywords": [
     "json5",
