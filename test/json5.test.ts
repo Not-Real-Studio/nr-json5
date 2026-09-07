@@ -158,6 +158,9 @@ describe('parseJson5 — grammar spot checks', () => {
 describe('stringifyJson5 — canonical relaxed', () => {
   test.each([
     ['bare key', { a: 1 }, '{a: 1}'],
+    ['sparse array — holes become null, length kept', Array(2), '[null, null]'],
+    ['sparse array — single hole', Array(1), '[null]'],
+    ['sparse array — mixed', (() => { const x: unknown[] = [1]; x[3] = 4; return x })(), '[1, null, null, 4]'],
     ['bare key with $ and _', { $a_1: 1 }, '{$a_1: 1}'],
     ['quoted key — dash', { 'a-b': 1 }, "{'a-b': 1}"],
     ['quoted key — leading digit', { '1a': 1 }, "{'1a': 1}"],

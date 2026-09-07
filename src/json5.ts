@@ -1048,7 +1048,11 @@ function serializeValue(value: unknown, stack: object[]): string | undefined {
   let result: string
 
   if (Array.isArray(object)) {
-    const parts = object.map((item) => serializeValue(item, stack) ?? 'null')
+    // Явный обход до length: Array.map пропускает дырки разреженного массива —
+    // [ , ] терял длину и выдавал невалидный JSON5. Дырка → null, как в JSON.stringify.
+    const arr = object as unknown[]
+    const parts: string[] = []
+    for (let i = 0; i < arr.length; i++) parts.push(serializeValue(arr[i], stack) ?? 'null')
     result = '[' + parts.join(', ') + ']'
   } else {
     const parts: string[] = []
